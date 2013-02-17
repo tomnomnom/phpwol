@@ -1,10 +1,3 @@
-# phpwol
-
-Wake On LAN for PHP.
-
-## Example
-
-```php
 <?php
 // ./Examples/Basic.php
 require __DIR__.'/../Phpwol/Init.php';
@@ -23,14 +16,3 @@ if ($result){
   echo "Failed\n";
 }
 
-```
-
-```
-▶ php example.php
-Worked
-```
-
-## Requirements
-
-* Linux of some description
-* PHP 5.3 or newer
