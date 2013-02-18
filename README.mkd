@@ -4,7 +4,7 @@ Wake On LAN for PHP.
 
 ## Example
 
-A `\Phpwol\MagicPacket` object is used to send a WOL packet. It is availble via the `\Phpwol\Factory::magicPacket()` method.
+A `\Phpwol\MagicPacket` object is used to send a WOL packet. Such an object is availble via the `\Phpwol\Factory::magicPacket()` method.
 
 
 ```php
