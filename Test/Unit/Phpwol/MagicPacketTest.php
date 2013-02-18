@@ -31,6 +31,14 @@ class MagicPacketTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals(\Phpwol\MagicPacket::ERR_INVALID_IP, $m->getLastError(), "Last error should have been ERR_INVALID_IP");
   }
 
+  public function testInvalidSubnet(){
+    $m = new \Phpwol\MagicPacket();
+     
+    $m->send('50:46:5C:53:94:25', '192.168.1.10', '255.255.');
+
+    $this->assertEquals(\Phpwol\MagicPacket::ERR_INVALID_SUBNET, $m->getLastError(), "Last error should have been ERR_INVALID_SUBNET");
+  }
+
   public function testGetBroadcastIP(){
     $m = new \Phpwol\MagicPacket(); 
 

@@ -17,10 +17,20 @@ class MagicPacket {
     // Reset the last error
     $this->lastError = 0;
 
+    if (!filter_var($ip, FILTER_VALIDATE_IP)){
+      $this->lastError = self::ERR_INVALID_IP;
+      return false;
+    }
+
     // If we're not given a subnet assume a broadcast IP
     if (is_null($subnet)){
       $broadcastIP = $ip;
     } else {
+
+      if (!filter_var($subnet, FILTER_VALIDATE_IP)){
+        $this->lastError = self::ERR_INVALID_SUBNET;
+        return false;
+      }
       $broadcastIP = $this->getBroadcastIP($ip, $subnet);
     }
 
@@ -31,10 +41,6 @@ class MagicPacket {
       return false;
     }
 
-    if (!filter_var($broadcastIP, FILTER_VALIDATE_IP)){
-      $this->lastError = self::ERR_INVALID_IP;
-      return false;
-    }
     
     $binMac = pack('H12', $hexMac);
     $prefix = pack('H12', str_repeat('FF', 6));
