@@ -4,6 +4,9 @@ Wake On LAN for PHP.
 
 ## Example
 
+A `\Phpwol\MagicPacket` object is used to send a WOL packet. It is availble via the `\Phpwol\Factory::magicPacket()` method.
+
+
 ```php
 <?php
 // ./Examples/Basic.php
@@ -26,7 +29,37 @@ if ($result){
 ```
 
 ```
-▶ php example.php
+▶ php ./Examples/Basic.php
+Worked
+```
+
+If you don't know what the broadcast IP is and don't know how to work it out, you can just specify the IP and subnet mask 
+and everything will be worked out for you.
+
+```php
+<?php
+// ./Examples/UnknownBroadcast.php
+require __DIR__.'/../Phpwol/Init.php';
+
+$f = new \Phpwol\Factory();
+$magicPacket = $f->magicPacket();
+
+$macAddress = '50:46:5C:53:94:25';
+$ip = '192.168.1.10';
+$subnet = '255.255.255.0';
+
+$result = $magicPacket->send($macAddress, $ip, $subnet);
+
+if ($result){
+  echo "Worked\n";
+} else {
+  echo "Failed\n";
+}
+
+```
+
+```
+▶ php ./Examples/UnknownBroadcast.php
 Worked
 ```
 
@@ -34,3 +67,11 @@ Worked
 
 * Linux of some description
 * PHP 5.3 or newer
+
+## Testing
+
+You can run the tests by running:
+
+```
+▶ phpunit
+```
