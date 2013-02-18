@@ -1,8 +1,51 @@
-# phpwol
+# Phpwol
 
-Wake On LAN for PHP.
+Send Wake On LAN packets with PHP.
 
-## Example
+## Contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [Testing](#testing)
+
+## Installation
+
+Phpwol is available on [Packagist](https://packagist.org/packages/tomnomnom/phpwol) so you can 
+install it using [Composer](http://getcomposer.org/). Just specify it as a dependency in your 
+`composer.json`:
+
+```json
+{
+    "require": {
+        "tomnomnom/phpwol": "0.0.1"
+    }
+}
+```
+
+Then run `composer install`:
+
+```
+▶ composer install
+Loading composer repositories with package information
+Installing dependencies
+  - Installing tomnomnom/phpwol (0.0.1)
+    Downloading: 100%         
+
+Writing lock file
+Generating autoload files
+```
+
+Once installed you can use the Composer autoloader instead of the one provided in `./Phpwol/Init.php`:
+
+```php
+<?php
+require __DIR__.'/vendor/autoload.php';
+
+$f = new \Phpwol\Factory();
+$m = $f->magicPacket();
+```
+
+## Usage
 
 A `\Phpwol\MagicPacket` object is used to send a WOL packet. Such an object is availble via the `\Phpwol\Factory::magicPacket()` method.
 
@@ -75,3 +118,7 @@ You can run the tests by running:
 ```
 ▶ phpunit
 ```
+
+The repo is hooked up to Travis CI. You can see the state of the master branch and the 
+build history on the [Phpwol Travis CI page](https://travis-ci.org/TomNomNom/phpwol).
+The full test suite runs under PHP 5.3 and PHP 5.4.
