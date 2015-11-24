@@ -17,7 +17,7 @@ install it using [Composer](http://getcomposer.org/). Just specify it as a depen
 ```json
 {
     "require": {
-        "tomnomnom/phpwol": "0.0.1"
+        "tomnomnom/phpwol": "0.1.0"
     }
 }
 ```
@@ -28,7 +28,7 @@ Then run `composer install`:
 ▶ composer install
 Loading composer repositories with package information
 Installing dependencies
-  - Installing tomnomnom/phpwol (0.0.1)
+  - Installing tomnomnom/phpwol (0.1.0)
     Downloading: 100%         
 
 Writing lock file
