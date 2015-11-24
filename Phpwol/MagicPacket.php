@@ -5,9 +5,10 @@ class MagicPacket {
   protected $socket;
   protected $lastError = 0;
 
-  const ERR_INVALID_IP     = 1;
-  const ERR_INVALID_MAC    = 2;
-  const ERR_INVALID_SUBNET = 4;
+  const ERR_INVALID_IP         = 1;
+  const ERR_INVALID_MAC        = 2;
+  const ERR_INVALID_SUBNET     = 4;
+  const ERR_SOCKET_SEND_FAILED = 8;
 
   public function __construct(Socket $socket = null){
     $this->socket = $socket;
@@ -47,7 +48,11 @@ class MagicPacket {
 
     $magicPacket = $prefix . str_repeat($binMac, 16);
     
-    $this->socket->sendBroadcastUDP($magicPacket, $broadcastIP, 7);
+    $sent = $this->socket->sendBroadcastUDP($magicPacket, $broadcastIP, 7);
+    if (!$sent){
+      $this->lastError = self::ERR_SOCKET_SEND_FAILED;
+      return false;
+    }
 
     return true;
   }

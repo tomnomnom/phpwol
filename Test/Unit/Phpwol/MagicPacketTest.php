@@ -78,4 +78,16 @@ class MagicPacketTest extends \PHPUnit_Framework_TestCase {
 
     $this->assertEquals($expected, $actual, "Last data should match expected");
   }
+
+  public function testSocketSendFailed(){
+    $s = new \Test\Mock\Phpwol\Socket();
+    $s->socketShouldFail = true;
+    $m = new \Phpwol\MagicPacket($s);
+
+    $mac = '50:46:5C:53:94:25';
+    $r = $m->send($mac, '192.168.1.255');
+
+    $this->assertFalse($r, "Socket send should have failed");
+    $this->assertEquals(\Phpwol\MagicPacket::ERR_SOCKET_SEND_FAILED, $m->getLastError(), "Last error should have been ERR_SOCKET_SEND_FAILED");
+  }
 }
