@@ -120,5 +120,5 @@ You can run the tests by running:
 ```
 
 The repo is hooked up to Travis CI. You can see the state of the master branch and the 
-build history on the [Phpwol Travis CI page](https://travis-ci.org/TomNomNom/phpwol).
+build history on the [Phpwol Travis CI page](https://travis-ci.org/tomnomnom/phpwol).
 The full test suite runs under PHP 5.3 and PHP 5.4.
