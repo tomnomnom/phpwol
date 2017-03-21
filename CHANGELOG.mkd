@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+* Allow packets to be sent to different subnets (issue #2) - Thanks, @strebl!
+
+## 0.1.0
+* Error supression on `socket_sendto` (issue #1)
+
 ## 0.0.1 - 2013-02-18
 * Working
 * Has tests
